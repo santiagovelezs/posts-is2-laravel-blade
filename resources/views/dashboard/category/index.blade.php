@@ -3,12 +3,12 @@
 
 <div class="container">
 
-@section('title')
-Posts
-<hr>
-@endsection
+    @section('title')
+    Categories
+    <hr>
+    @endsection
 
-<a class="btn btn-dark mt-3 mb-3" href="{{ route('post.create') }}">Crear</a>
+<a class="btn btn-dark mt-3 mb-3" href="{{ route('category.create') }}">Crear</a>
 
 <table class="table table-striped">
     <thead>
@@ -18,13 +18,7 @@ Posts
             </td>
             <td>
                 Nombre
-            </td>
-            <td>
-                Categoria
-            </td>
-            <td>
-                Estado publicación
-            </td>
+            </td>            
             <td>
                 Creación
             </td>
@@ -37,28 +31,21 @@ Posts
         </tr>
     </thead>
     <tbody>
-        @foreach ($posts as $post)
+        @foreach ($categories as $category)
         <tr>
             <td>
-                {{ $post->id }}
+                {{ $category->id }}
             </td>
             <td>
-                {{ $post->name }}
+                {{ $category->name }}
+            </td>            
+            <td>
+                {{ $category->created_at->format('d-m-Y') }}
             </td>
             <td>
-                {{ $post->category->name ?? '' }}
+                {{ $category->updated_at->format('d-m-Y') }}
             </td>
-            <td>
-                {{ $post->state }}
-            </td>
-            <td>
-                {{ $post->created_at->format('d-m-Y') }}
-            </td>
-            <td>
-                {{ $post->updated_at->format('d-m-Y') }}
-            </td>
-            <td>
-                <a href="{{ route('post.show',$post->id) }}"><i class="far fa-eye"></i></a>
+            <td>                
                 <i class="far fa-edit"></i>                
                 <i class="far fa-trash-alt"></i>
             </td>
@@ -67,7 +54,7 @@ Posts
     </tbody>
 </table>
 
-{{ $posts->links() }}
+{{ $categories->links() }}
 
 </div>
 

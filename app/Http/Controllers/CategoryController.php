@@ -15,7 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::orderBy('created_at', 'desc')->simplePaginate(5);
+
+        return view('dashboard.category.index', ['categories'=>$categories]);
     }
 
     /**
@@ -37,7 +39,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         Category::create($request->validated());
-        return back()->with('status', 'Categoría creada con éxito'); 
+        return back()->with('_success', 'Categoría creada con éxito!'); 
     }
 
     /**

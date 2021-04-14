@@ -12,56 +12,88 @@
     <!-- https://getbootstrap.com/docs/5.0/examples/ -->
     <!-- https://getbootstrap.com/docs/5.0/examples/dashboard/ -->
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Prensa UAM <i class="far fa-newspaper"></i></a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>       
-        <ul class="navbar-nav px-3">
-          <li class="nav-item text-nowrap">
-            <a class="nav-link" href="#">Sign out</a>
-          </li>
-        </ul>
-      </header>
+      <ul class="navbar-nav">        
+        <li class="nav-item mb-2 px-3">
+          <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>   
+        </li>
+        <hr>
+        <li class="nav-item mb-3 px-2">
+          <img width="90" src="https://congresos.autonoma.edu.co/sites/default/files/Logos_UAM-09.png" alt="">
+          <a class="navbar-brand px-2 mb-2" href="#">Prensa UAM <i class="far fa-newspaper"></i></a>          
+        </li>
+      </ul>    
+      <ul class="navbar-nav px-2">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="#">Sign out</a>
+        </li>
+      </ul>
+    </header>
 
     <div class="container-fluid">        
         <div class="row">
-          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-            <div class="position-sticky pt-3">
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">
-                    <i class="fas fa-home"></i>
-                    Dashboard
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i class="fas fa-clipboard"></i>
-                    Posts
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i class="fas fa-list-ul"></i>
-                    Categories
-                  </a>
-                </li>                
-              </ul>              
+          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse mt-3">            
+            <!-- Trying Collapse -->
+            <ul class="nav flex-column">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <p>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">
+                      <i class="fas fa-home"></i>
+                      Dashboard
+                    </a>
+                  </li>
+                </p>
+              </div>
+              <div class="card-header" id="headingOne">
+                <p>
+                  <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">                      
+                      <i class="fas fa-clipboard"></i>
+                      Posts
+                    </a>
+                  </li>                                  
+                </p>
+              </div>
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                  <a class="btn btn-dark mt-2" href="{{ route('post.index') }}">Listar</a>
+                  <a class="btn btn-dark mt-2" href="{{ route('post.create') }}">Crear</a>
+                </div>
+              </div>
             </div>
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <p>
+                  <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
+                      <i class="fas fa-list-ul"></i>
+                      Categories
+                    </a>
+                  </li>                                
+                </p>
+              </div>
+              <div class="collapse" id="collapseExample2">
+                <div class="card card-body">
+                  <a class="btn btn-dark mt-2" href="{{ route('category.index') }}">Listar</a>
+                  <a class="btn btn-dark mt-2" href="{{ route('category.create') }}">Crear</a>
+                </div>
+              </div>
+            </div>
+            </ul>
+            <!-- -->
           </nav>
       
           <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-              <h1 class="h2">Dashboard</h1>
+              <h1 class="h2">@yield('title')</h1>
+              <hr>
               <div class="btn-toolbar mb-2 mb-md-0">
                 <div class="btn-group me-2">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-                </div>
-                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                  This week
-                </button>
+                  <img width="50" src="https://play-lh.googleusercontent.com/Jh2b5ExL3ziWSDlxcT62iNL3I9L2zhtyMnFCH-0Asv4PcSVjUz1ysa78YhsXOO6MdA=s128-rw" alt="">                
+                </div>                
               </div>
             </div>
             <div class="row">

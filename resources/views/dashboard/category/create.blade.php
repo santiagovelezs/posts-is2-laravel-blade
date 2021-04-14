@@ -4,14 +4,15 @@
 
 <div class="container">
 
-    <h2>Crear Categoria</h2>
-
+    @section('title')
+    Crear Categoria
+    <hr>
+    @endsection    
     <form action="{{ route('category.store') }}" method="post">
         @include('dashboard.category._form')                         
-        <button type="submit" class="btn btn-success mt-3">Publicar</button>
-        <button type="button" class="btn btn-danger mt-3">Cancelar</button>            
-    </form>
-
+        <button type="submit" class="btn btn-dark mt-3">Publicar</button>
+        <button type="button" class="btn btn-light mt-3">Cancelar</button>            
+    </form>    
 </div>
 
 

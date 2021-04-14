@@ -41,7 +41,7 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {        
         Post::create($request->validated());
-        return back()->with('status', 'Publicación creada con éxito');        
+        return back()->with('_success', 'Publicación creada con éxito');        
     }
 
     /**
